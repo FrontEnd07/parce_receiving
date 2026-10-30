@@ -59,6 +59,7 @@ class ScaleDiagnosticsController extends Notifier<ScaleDiagnosticsState> {
     _scan = null;
     state = state.copyWith(isScanning: false);
   }
+
   Future<void> connect(String deviceId) async {
     if (!await BlePermissions.request()) {
       state = state.copyWith(error: 'Bluetooth permissions are required.');

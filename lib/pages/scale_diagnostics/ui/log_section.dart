@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:parcel_receiving/shared/ble/lib/diagnostic_packet.dart';
 import 'package:parcel_receiving/shared/localization/app_localizations.dart';
+import 'package:parcel_receiving/shared/ui/ui.dart';
 
 class LogSection extends StatelessWidget {
   const LogSection({
@@ -18,20 +19,13 @@ class LogSection extends StatelessWidget {
   Widget build(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Row(
-        children: [
-          Expanded(
-            child: Text(
-              localizations['rawLog'],
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-          TextButton.icon(
-            onPressed: log.isEmpty ? null : onClear,
-            icon: const Icon(Icons.delete_outline),
-            label: Text(localizations['clear']),
-          ),
-        ],
+      SectionHeading(
+        title: localizations['rawLog'],
+        trailing: TextButton.icon(
+          onPressed: log.isEmpty ? null : onClear,
+          icon: const Icon(Icons.delete_outline),
+          label: Text(localizations['clear']),
+        ),
       ),
       const SizedBox(height: 4),
       if (log.isEmpty) const _EmptyLog(),
@@ -43,14 +37,8 @@ class LogSection extends StatelessWidget {
 class _EmptyLog extends StatelessWidget {
   const _EmptyLog();
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
-      borderRadius: BorderRadius.circular(16),
-    ),
-    child: const Icon(Icons.receipt_long_outlined),
-  );
+  Widget build(BuildContext context) =>
+      const EmptyStateCard(icon: Icons.receipt_long_outlined, title: '—');
 }
 
 class _LogEntry extends StatelessWidget {

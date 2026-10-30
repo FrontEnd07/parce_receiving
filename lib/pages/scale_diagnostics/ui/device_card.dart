@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../entities/scale/model/scale_device.dart';
 import '../../../shared/localization/app_localizations.dart';
+import '../../../shared/ui/ui.dart';
 
 class DeviceCard extends StatelessWidget {
   const DeviceCard({
@@ -92,35 +93,10 @@ class EmptyDevices extends StatelessWidget {
   const EmptyDevices({super.key, required this.localizations});
   final AppLocalizations localizations;
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(24),
-    decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: Column(
-      children: [
-        Icon(
-          Icons.bluetooth_searching,
-          size: 36,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        const SizedBox(height: 12),
-        Text(
-          localizations['noDevices'],
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleSmall,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          localizations['noDevicesHint'],
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
-        ),
-      ],
-    ),
+  Widget build(BuildContext context) => EmptyStateCard(
+    icon: Icons.bluetooth_searching,
+    title: localizations['noDevices'],
+    description: localizations['noDevicesHint'],
   );
 }
 

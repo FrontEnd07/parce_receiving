@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../features/connect_scale/model/scale_diagnostics_state.dart';
 import '../../../shared/localization/app_localizations.dart';
+import '../../../shared/ui/ui.dart';
 import 'device_card.dart';
 
 class DeviceList extends StatelessWidget {
@@ -21,20 +22,13 @@ class DeviceList extends StatelessWidget {
   Widget build(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Row(
-        children: [
-          Text(
-            localizations['nearbyDevices'],
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const Spacer(),
-          Text(
-            '${state.devices.length}',
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
+      SectionHeading(
+        title: localizations['nearbyDevices'],
+        trailing: Text(
+          '${state.devices.length}',
+          style: Theme.of(context).textTheme.labelLarge
+              ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+        ),
       ),
       const SizedBox(height: 4),
       Text(

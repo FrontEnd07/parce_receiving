@@ -9,7 +9,10 @@ void main() {
       final sourceFiles = Directory('lib')
           .listSync(recursive: true)
           .whereType<File>()
-          .where((file) => file.path.endsWith('.dart'));
+          .where(
+            (file) =>
+                file.path.endsWith('.dart') && !file.path.endsWith('.g.dart'),
+          );
       final tooLong = sourceFiles
           .where((file) => file.readAsLinesSync().length > 150)
           .map((file) => '${file.path}: ${file.readAsLinesSync().length}')

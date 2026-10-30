@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/ble/model/co5_protocol.dart';
 import '../../../shared/localization/app_localizations.dart';
+import '../../../shared/ui/ui.dart';
 
 class CommandGrid extends StatelessWidget {
   const CommandGrid({
@@ -18,10 +19,7 @@ class CommandGrid extends StatelessWidget {
   Widget build(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(
-        localizations['commands'],
-        style: Theme.of(context).textTheme.titleLarge,
-      ),
+      SectionHeading(title: localizations['commands']),
       const SizedBox(height: 12),
       GridView.count(
         shrinkWrap: true,

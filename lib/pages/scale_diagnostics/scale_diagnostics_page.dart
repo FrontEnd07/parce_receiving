@@ -24,6 +24,16 @@ class ScaleDiagnosticsPage extends ConsumerWidget {
         title: const Text('Parcel Receiving'),
         actions: [
           IconButton(
+            onPressed: () => context.push('/receiving'),
+            icon: const Icon(Icons.inventory_2_outlined),
+            tooltip: l['receiving'],
+          ),
+          IconButton(
+            onPressed: () => context.push('/export'),
+            icon: const Icon(Icons.archive_outlined),
+            tooltip: l['export'],
+          ),
+          IconButton(
             onPressed: () => context.push('/settings'),
             icon: const Icon(Icons.settings_outlined),
             tooltip: l['settings'],
